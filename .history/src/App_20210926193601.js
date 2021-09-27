@@ -24,8 +24,7 @@ function App() {
   }
 
   const handleIsChecked = (event) => {
-    console.log(items)
-    
+    //setIsChecked(event.target.isChecked)
   }
 
   const handleDelete = (event) => {
@@ -35,16 +34,14 @@ function App() {
 
   console.log(items)
   const mapTodos = items.map(todoItem => <Todo text={todoItem.todo}
-   onChange={handleIsChecked} 
+   onChange={items.isChecked} 
    //onChange={handleIsChecked}
    onClick={handleDelete} />)
 
  
   
   return (
-    
     <div className="App">
-      {handleIsChecked}
       <h1>Todos</h1>
       <Form onSubmit={handleSubmit}>
       <Form.Group >

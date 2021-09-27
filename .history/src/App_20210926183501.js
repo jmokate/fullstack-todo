@@ -8,43 +8,38 @@ import './App.css';
 function App() {
   const [input, setInput] = useState({todo: ""})
   const [items, setItems] = useState([])
-  //const [isChecked, setIsChecked] = useState(false)
-  //const [id, setId] = useState(0)
+  const [isChecked, setIsChecked] = useState(false)
+  const [id, setId] = useState(0)
   
   const handleChange = (event) => {
     const {name, value} = event.target;
-    setInput(prevInput => ({...prevInput, [name]: value, id: Date.now(), isChecked: false}))
+    setInput(prevInput => ({...prevInput, [name]: value}))
   }
   
   const handleSubmit = (event) => {
     event.preventDefault();
     setItems(prevItems => [...prevItems, input])
-   
+    setId(...id + 1)
     setInput({todo: ""})
   }
 
   const handleIsChecked = (event) => {
-    console.log(items)
-    
+    setIsChecked(event.target.checked)
   }
 
-  const handleDelete = (event) => {
-    const newList = items.filter((item) => item.todo !== item)
-    setItems(newList)
-  }
+  // const handleDelete = (event) => {
+  //   const newList = list.filter
+  // }
 
   console.log(items)
-  const mapTodos = items.map(todoItem => <Todo text={todoItem.todo}
-   onChange={handleIsChecked} 
-   //onChange={handleIsChecked}
-   onClick={handleDelete} />)
+  const mapTodos = items.map(todoItem => <Todo text={todoItem.todo} key={id} id={id}
+   //checked={items.isChecked} 
+   onChange={handleIsChecked} />)
 
  
   
   return (
-    
     <div className="App">
-      {handleIsChecked}
       <h1>Todos</h1>
       <Form onSubmit={handleSubmit}>
       <Form.Group >
@@ -53,7 +48,7 @@ function App() {
       </Form.Group>
       </Form>
       {mapTodos}
-      {/* <h1>check box is {isChecked ? "true" : "false"}</h1> */}
+      <h1>check box is {isChecked ? "true" : "false"}</h1>
     </div>
   );
 }

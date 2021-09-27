@@ -24,8 +24,7 @@ function App() {
   }
 
   const handleIsChecked = (event) => {
-    console.log(items)
-    
+    console.log(event.target)
   }
 
   const handleDelete = (event) => {
@@ -35,7 +34,7 @@ function App() {
 
   console.log(items)
   const mapTodos = items.map(todoItem => <Todo text={todoItem.todo}
-   onChange={handleIsChecked} 
+   onChange={items.isChecked} 
    //onChange={handleIsChecked}
    onClick={handleDelete} />)
 

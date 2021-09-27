@@ -24,7 +24,7 @@ function App() {
   }
 
   const handleIsChecked = (event) => {
-    console.log(items)
+    console.log(event)
     
   }
 

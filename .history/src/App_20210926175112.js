@@ -9,42 +9,33 @@ function App() {
   const [input, setInput] = useState({todo: ""})
   const [items, setItems] = useState([])
   //const [isChecked, setIsChecked] = useState(false)
-  //const [id, setId] = useState(0)
   
   const handleChange = (event) => {
     const {name, value} = event.target;
-    setInput(prevInput => ({...prevInput, [name]: value, id: Date.now(), isChecked: false}))
+
+    setInput(prevInput => ({...prevInput, [name]: value}))
   }
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    setItems(prevItems => [...prevItems, input])
-   
-    setInput({todo: ""})
+    setItems(prevItems => [...prevItems, input, {isChecked: false}])
   }
 
-  const handleIsChecked = (event) => {
-    console.log(items)
+  // const handleIsChecked = (event) => {
     
-  }
-
-  const handleDelete = (event) => {
-    const newList = items.filter((item) => item.todo !== item)
-    setItems(newList)
-  }
+  //   setIsChecked(event.target.checked)
+  // }
 
   console.log(items)
   const mapTodos = items.map(todoItem => <Todo text={todoItem.todo}
-   onChange={handleIsChecked} 
-   //onChange={handleIsChecked}
-   onClick={handleDelete} />)
+   //checked={isChecked} 
+   //onChange={handleIsChecked} />)
+   )
 
  
   
   return (
-    
     <div className="App">
-      {handleIsChecked}
       <h1>Todos</h1>
       <Form onSubmit={handleSubmit}>
       <Form.Group >
@@ -53,7 +44,8 @@ function App() {
       </Form.Group>
       </Form>
       {mapTodos}
-      {/* <h1>check box is {isChecked ? "true" : "false"}</h1> */}
+      {items}
+      
     </div>
   );
 }

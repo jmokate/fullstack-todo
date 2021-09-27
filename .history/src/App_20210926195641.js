@@ -24,8 +24,13 @@ function App() {
   }
 
   const handleIsChecked = (event) => {
-    console.log(items)
     
+    items.forEach(todo => {
+      if (todo.value === event.target.value)
+        todo.isChecked = event.target.checked
+    })
+    setItems({todos: todos})
+    console.log(items)
   }
 
   const handleDelete = (event) => {
