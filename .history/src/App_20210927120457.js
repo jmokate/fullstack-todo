@@ -25,7 +25,7 @@ function App() {
       checked: isChecked,
       id: Date.now()
     }
-    setItems([...items, todoItem])
+    setItems(prevItems => [...prevItems, todoItem])
     setInput('')
   }
 
@@ -53,11 +53,7 @@ function App() {
       <h1>Todos</h1>
       <Form onSubmit={handleSubmit}>
       <Form.Group >
-        <Form.Control 
-        type="text"
-        name="input" 
-        value={input} 
-        onChange={e => setInput(e.target.value)}></Form.Control>
+        <Form.Control type="text" name="input" value={input} onChange={e => setInput(e.target.value)}></Form.Control>
         <Button type="submit">Add</Button>
       </Form.Group>
       </Form>
