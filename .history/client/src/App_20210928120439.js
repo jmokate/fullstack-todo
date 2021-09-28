@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Form, Button} from "react-bootstrap"
 import TodoList from "./Components/TodoList.js"
 import './App.css';
-//import axios from "axios";
+import axios from "axios";
 
 
 function App() {
@@ -11,6 +11,11 @@ function App() {
   const [items, setItems] = useState([])
   const [isChecked, setIsChecked] = useState(false)
 
+  // useEffect(async () => {
+  //   await axios
+  //     .get('/api/get')
+  //     .then(response => console.log(response.data))
+  // }, [])
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,9 +26,18 @@ function App() {
     }
     setItems([...items, todoItem])
     setInput('')
+    createPost(todoItem)
   }
 
-
+ const createPost = async (item) => {
+   console.log(item)
+   await axios
+    .post('http://localhost:5000//api/post', item)
+    .then(response => {
+     console.log("the response", response.data)
+     .catch(err => console.log(err))
+   })
+ }
 
   const handleDelete = (id) => {
     setItems(items.filter((item) => item.id !== id));

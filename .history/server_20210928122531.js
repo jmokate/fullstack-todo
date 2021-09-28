@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 
-//middleware parser
 app.use(bodyParser.json())
 
 app.post('/api/post', async (req,res) => {
