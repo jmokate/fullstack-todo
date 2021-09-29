@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-require('./pgAccess')
+const require('./pgAccess')
 
 //middleware parser
 app.use(bodyParser.json())
