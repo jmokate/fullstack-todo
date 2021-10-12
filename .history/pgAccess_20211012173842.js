@@ -12,20 +12,6 @@ const config = {
 //   .catch((err) => console.log("there was an error", err))
 //   .finally(() => client.end())
 
-connectToDb = async () => {
-  const client = new Client(config);
-  if (client) {
-    console.log("client exists");
-    return client
-  } else {
-    try {
-      await client.connect();
-      console.log("client is connected to db");
-      return client
-    } catch (err) {
-      console.log("not connected to the db ", error)
-    }
-  }
-}
+  const clientConnection = new Client(config);
 
-module.exports={connectToDb}
+module.exports={clientConnection}

@@ -11,7 +11,7 @@ app.post('/api/post', async (req,res) => {
    
    const newTodoItem = req.body.text;
    await console.log("new todo item is ", newTodoItem)
-    //res.send('hello there')
+    res.send('hello there')
   let returnedItem = await postTodoAccess.postTodo(newTodoItem);
   console.log("the returned item is ", returnedItem);
 })
