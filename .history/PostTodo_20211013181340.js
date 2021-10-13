@@ -6,7 +6,7 @@ const postTodo = async (todo) => {
   let client = await pgAccess.connectToDb();
     try {
       await client.query("BEGIN");
-      const results = client.query("INSERT INTO todos(item) VALUES($1)", [todo]);
+      const results = client.query("INSERT INTO todos(item) VALUES($1), [todo]);
       await client.query("COMMIT");
       console.table(results.rows);
       return results.rows;

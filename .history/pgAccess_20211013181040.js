@@ -14,7 +14,7 @@ const config = {
 
 connectToDb = async () => {
   const client = new Client(config);
- 
+  client.connect();
   if (client) {
     console.log("client exists");
     return client

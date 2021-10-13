@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const pgAccess = require('./pgAccess')
+require('./pgAccess')
 const postTodoAccess = require('./PostTodo.js');
 
 pgAccess.connectToDb();
