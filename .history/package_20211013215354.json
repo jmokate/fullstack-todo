@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"nodemon server.js\" \"npm run client\"",
     "dev": "nodemon server.js",
-    "client": "cd client && npm run watch"
+    "client": "cd client && npm run start"
   },
   "proxy": "http://localhost:3000",
   "repository": {

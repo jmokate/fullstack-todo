@@ -36,12 +36,12 @@ function App() {
     setItems(checkedItem)
   }
 
- const createPost = async (item) => {
+ const createPost = async (ite m) => {
    console.log(item)
    await axios
     .post('/api/post', item)
     .then(response => {
-     console.log("the response", response.data) 
+     console.log("the response", response.data)
      
    }).catch(err => console.log(err))
  }

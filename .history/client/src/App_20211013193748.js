@@ -41,7 +41,7 @@ function App() {
    await axios
     .post('/api/post', item)
     .then(response => {
-     console.log("the response", response.data) 
+     console.log("the response", response.data)
      
    }).catch(err => console.log(err))
  }

@@ -7,8 +7,6 @@ const path = require("path")
 
 pgAccess.connectToDb();
 
-
-app.use(express.static(path.join(__dirname, "client/build")));
 //middleware parser
 app.use(bodyParser.json())
 
