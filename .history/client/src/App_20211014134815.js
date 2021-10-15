@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Form, Button} from "react-bootstrap"
 import TodoList from "./Components/TodoList.js"
@@ -11,33 +11,23 @@ function App() {
   const [items, setItems] = useState([])
   const [isChecked, setIsChecked] = useState(false)
 
-   useEffect(() => {    
-     GET_API();    
-   }, [])
-
-   const GET_API = async () => {
-    // console.log("use effect in effect")
+   useEffect(async () => {
+     console.log("use effect in effect")
      await axios
        .get('/api/get')
-       .then(response =>  {
-         const responseItems = response.data
-         setItems(responseItems)
-       })
-       .catch(err => console.log("error with front end GET ", err))
-    }  
-
-  
+       .then(response => console.log(response.data))
+   }, [])
   
   const handleSubmit = (event) => {
     event.preventDefault();
     const todoItem = {
-      text: input
+      text: input,
+      checked: isChecked,
+      id: Date.now()
     }
     setItems([...items, todoItem])
     setInput('')
     createPost(todoItem)
-    GET_API();
-       
   }
 
   const handleCheck = (id) => {

@@ -14,8 +14,7 @@ app.use(bodyParser.json())
 
 app.get('/api/get', async (req, res) => {
   await console.log('get request initiated')
-  let getResponse = await todoAccess.getTodo()
-  res.send(getResponse)
+  res.send("get request initiated")
 })
 
 app.post('/api/post', async (req,res) => {

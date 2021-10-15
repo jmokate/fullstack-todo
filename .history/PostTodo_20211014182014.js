@@ -7,9 +7,9 @@ const getTodo = async() => {
   let client = await pgAccess.connectToDb()
   try {
     await client.query("BEGIN");
-    const results = await client.query("SELECT * FROM todos")
+    const results = await client.query("SELECT item FROM todos")
     await client.query("COMMIT");
-    //console.table(results.rows)
+    console.table(results.rows)
     return results.rows
 
   } catch (err) {
@@ -22,7 +22,7 @@ const postTodo = async (todo) => {
   let client = await pgAccess.connectToDb();
     try {
       await client.query("BEGIN");
-      const results = await client.query("INSERT INTO todos(text) VALUES($1) returning id", [todo]);
+      const results = await client.query("INSERT INTO todos(item) VALUES($1) returning id", [todo]);
       await client.query("COMMIT");
      // console.table(results.rows[0]);
       //return results.rows[0];

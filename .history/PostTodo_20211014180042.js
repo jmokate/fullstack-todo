@@ -4,17 +4,6 @@ require('./server.js')
 
 const getTodo = async() => {
   console.log("database GET started")
-  let client = await pgAccess.connectToDb()
-  try {
-    await client.query("BEGIN");
-    const results = await client.query("SELECT * FROM todos")
-    await client.query("COMMIT");
-    //console.table(results.rows)
-    return results.rows
-
-  } catch (err) {
-    console.log("error getting todos", err)
-  }
 }
 
 const postTodo = async (todo) => {
@@ -22,9 +11,9 @@ const postTodo = async (todo) => {
   let client = await pgAccess.connectToDb();
     try {
       await client.query("BEGIN");
-      const results = await client.query("INSERT INTO todos(text) VALUES($1) returning id", [todo]);
+      const results = await client.query("INSERT INTO todos(item) VALUES($1) returning id", [todo]);
       await client.query("COMMIT");
-     // console.table(results.rows[0]);
+      console.table(results.rows[0]);
       //return results.rows[0];
 
     } catch (error) {

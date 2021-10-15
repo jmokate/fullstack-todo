@@ -11,20 +11,20 @@ function App() {
   const [items, setItems] = useState([])
   const [isChecked, setIsChecked] = useState(false)
 
-   useEffect(() => {    
-     GET_API();    
-   }, [])
-
-   const GET_API = async () => {
-    // console.log("use effect in effect")
-     await axios
-       .get('/api/get')
-       .then(response =>  {
-         const responseItems = response.data
-         setItems(responseItems)
-       })
-       .catch(err => console.log("error with front end GET ", err))
-    }  
+   useEffect(() => {
+     const GET_API = async () => {
+     // console.log("use effect in effect")
+      await axios
+        .get('/api/get')
+        .then(response =>  {
+          const responseItems = response.data
+          setItems(responseItems)
+        })
+        .catch(err => console.log("error with front end GET ", err))
+     }  
+     GET_API();
+     
+   }, [items])
 
   
   
@@ -32,12 +32,11 @@ function App() {
     event.preventDefault();
     const todoItem = {
       text: input
+      
     }
     setItems([...items, todoItem])
     setInput('')
-    createPost(todoItem)
-    GET_API();
-       
+    createPost(todoItem)   
   }
 
   const handleCheck = (id) => {

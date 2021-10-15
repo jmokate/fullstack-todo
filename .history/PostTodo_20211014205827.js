@@ -7,7 +7,7 @@ const getTodo = async() => {
   let client = await pgAccess.connectToDb()
   try {
     await client.query("BEGIN");
-    const results = await client.query("SELECT * FROM todos")
+    const results = await client.query("SELECT text FROM todos")
     await client.query("COMMIT");
     //console.table(results.rows)
     return results.rows

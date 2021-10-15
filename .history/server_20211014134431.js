@@ -14,8 +14,7 @@ app.use(bodyParser.json())
 
 app.get('/api/get', async (req, res) => {
   await console.log('get request initiated')
-  let getResponse = await todoAccess.getTodo()
-  res.send(getResponse)
+  res.send("get request initiated")
 })
 
 app.post('/api/post', async (req,res) => {
@@ -27,7 +26,9 @@ app.post('/api/post', async (req,res) => {
  // console.log("the returned item is ", returnedItem);
 })
 
-
+app.get('/api/get', (req,res) => {
+  res.send('get path working')
+})
 
 //serve static files
 app.get("/*", (req, res) => {
