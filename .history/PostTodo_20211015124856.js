@@ -39,10 +39,8 @@ const deleteTodo = async (id) => {
   let client = await pgAccess.connectToDb();
   try {
     client.query("BEGIN");
-    let result = await client.query("DELETE FROM todos WHERE id = ($1) RETURNING *", [id])
-    client.query("COMMIT");
-    // console.table(result.rows)
-    // return(result.rows)
+    let result = await client.query("DELETE FROM todos(id) WHERE id = ($1)", [id])
+    console.table(results.rows[0])
   } catch (err) {
     console.log('error deleting post ', err);
     await client.query("ROLLBACK");

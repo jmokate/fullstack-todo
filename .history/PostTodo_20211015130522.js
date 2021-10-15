@@ -41,8 +41,8 @@ const deleteTodo = async (id) => {
     client.query("BEGIN");
     let result = await client.query("DELETE FROM todos WHERE id = ($1) RETURNING *", [id])
     client.query("COMMIT");
-    // console.table(result.rows)
-    // return(result.rows)
+    console.table(result.rows)
+    return(result.rows)
   } catch (err) {
     console.log('error deleting post ', err);
     await client.query("ROLLBACK");

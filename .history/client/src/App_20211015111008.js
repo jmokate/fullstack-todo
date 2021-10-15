@@ -59,18 +59,16 @@ function App() {
  }
 
   const handleDelete = (id) => {
-    
     setItems(items.filter((item) => item.id !== id));
     deletePost(id)
     
   }
 
-  const deletePost = async (id) => {
-   const deleteUrl = `/api/delete`
-    await axios.delete(deleteUrl, {params: {id}})
-      .then(response => console.log('front end delete', response.data))
-      .catch(err => console.log("error with delete ", err))
-  }
+  // const deletePost = async (id) => {
+  //   await axios.delete(`/api/delete`, id)
+  //     .then(response => console.log('front end delete', response.data))
+  //     .catch(err => console.log("error with delete ", err))
+  // }
   console.log(items)
   
   return (

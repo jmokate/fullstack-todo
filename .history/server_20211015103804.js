@@ -26,13 +26,11 @@ app.post('/api/post', async (req,res) => {
    await todoAccess.postTodo(newTodoItem);
 })
 
-app.delete(`/api/delete`, async (req, res) => {
-  console.log("query is ", req.query)
-  console.log("the params are ",req.params)
-  const {id} = req.query
-  console.log("the id is ",id)
-  //await todoAccess.deleteTodo(id)
-  
+app.delete('/api/delete:id', async (req, res) => {
+  console.log(req.params)
+  const {id} = req.params
+  console.log(id)
+  await todoAccess.deleteTodo(id)
 })
 
 

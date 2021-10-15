@@ -31,8 +31,8 @@ app.delete(`/api/delete`, async (req, res) => {
   console.log("the params are ",req.params)
   const {id} = req.query
   console.log("the id is ",id)
-  //await todoAccess.deleteTodo(id)
-  
+  let results = await todoAccess.deleteTodo(id)
+  console.log(results)
 })
 
 

@@ -66,8 +66,8 @@ function App() {
   }
 
   const deletePost = async (id) => {
-   const deleteUrl = `/api/delete`
-    await axios.delete(deleteUrl, {params: {id}})
+   const deleteUrl = `/api/delete:${id}`
+    await axios.delete(deleteUrl)
       .then(response => console.log('front end delete', response.data))
       .catch(err => console.log("error with delete ", err))
   }

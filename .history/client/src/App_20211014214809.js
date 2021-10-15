@@ -16,6 +16,7 @@ function App() {
    }, [])
 
    const GET_API = async () => {
+    // console.log("use effect in effect")
      await axios
        .get('/api/get')
        .then(response =>  {
@@ -24,8 +25,6 @@ function App() {
        })
        .catch(err => console.log("error with front end GET ", err))
     }  
-
-    
 
   
   
@@ -59,17 +58,7 @@ function App() {
  }
 
   const handleDelete = (id) => {
-    
     setItems(items.filter((item) => item.id !== id));
-    deletePost(id)
-    
-  }
-
-  const deletePost = async (id) => {
-   const deleteUrl = `/api/delete`
-    await axios.delete(deleteUrl, {params: {id}})
-      .then(response => console.log('front end delete', response.data))
-      .catch(err => console.log("error with delete ", err))
   }
   console.log(items)
   
