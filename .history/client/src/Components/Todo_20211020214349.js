@@ -11,13 +11,16 @@ function Todo({setIsChecked, handleDelete, item, handleCheck}) {
     if (item.is_checked === true){
       handleDelete(id);
     }
-    setIsChecked(false);
+    setIsChecked(false)
   }
 
   const listStyle = {
     listStyleType: "none",
     textDecoration: item.is_checked ? "line-through" : "none"
-  }; 
+  }
+ 
+
+  
 
   return(
     <>
@@ -34,6 +37,6 @@ function Todo({setIsChecked, handleDelete, item, handleCheck}) {
       </Row>
     </>
   )
-};
+}
 
 export default Todo;

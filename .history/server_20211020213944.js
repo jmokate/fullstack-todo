@@ -7,10 +7,13 @@ const path = require("path");
 
 pgAccess.connectToDb();
 
+
 app.use(express.static(path.join(__dirname, "client/build")));
+//middleware parser
 app.use(bodyParser.json());
 
 app.get('/api/get', async (req, res) => {
+    // console.log('get request initiated')
   let getResponse = await todoAccess.getTodo();
   res.send(getResponse);
 });
@@ -43,4 +46,4 @@ app.get("/*", (req, res) => {
 });
 
 
-app.listen(5000, () => console.log("app is listening on port 5000"));
+app.listen(5000, () => console.log("app is listening on port 5000"))

@@ -17,7 +17,10 @@ function Todo({setIsChecked, handleDelete, item, handleCheck}) {
   const listStyle = {
     listStyleType: "none",
     textDecoration: item.is_checked ? "line-through" : "none"
-  }; 
+  };
+ 
+
+  
 
   return(
     <>
@@ -34,6 +37,6 @@ function Todo({setIsChecked, handleDelete, item, handleCheck}) {
       </Row>
     </>
   )
-};
+}
 
 export default Todo;

@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Todo from "./Todo.js";
-import {Row} from "react-bootstrap";
+import Todo from "./Todo.js"
+import {Row} from "react-bootstrap"
 
 const TodoList = ({items, handleDelete, setIsChecked, isChecked, handleCheck}) =>{
 

@@ -6,24 +6,27 @@ function Todo({setIsChecked, handleDelete, item, handleCheck}) {
 
   const checkValueThenDelete = (id) => {
     if (item.is_checked === false){
-      return;
+      return
     }
     if (item.is_checked === true){
       handleDelete(id);
     }
-    setIsChecked(false);
+    setIsChecked(false)
   }
 
   const listStyle = {
     listStyleType: "none",
     textDecoration: item.is_checked ? "line-through" : "none"
-  }; 
+  }
+ 
+
+  
 
   return(
     <>
       <Row>
         <Col>
-          <input type="checkbox" onChange={() => handleCheck(item.id)} checked={item.is_checked} />
+          <input type="checkbox" onChange={() => handleCheck(item)} checked={item.is_checked} />
         </Col>
         <Col >
           <li style={listStyle} ><h4>{item.text}</h4></li>
@@ -34,6 +37,6 @@ function Todo({setIsChecked, handleDelete, item, handleCheck}) {
       </Row>
     </>
   )
-};
+}
 
 export default Todo;

@@ -34,7 +34,9 @@ const putTodo = async (id) => {
     await pool.query("BEGIN");
     let result = await pool.query("UPDATE todos SET is_checked = NOT is_checked WHERE id = ($1) RETURNING *", [id]);
     await pool.query("COMMIT");
-    return result.rows[0];
+    console.table(result.rows[0])
+    return result.rows[0]
+
   } catch (err) {
     console.log('put error is ', err);
     pool.query("ROLLBACK");
@@ -42,12 +44,14 @@ const putTodo = async (id) => {
 };
 
 const deleteTodo = async (id) => {
+  console.log("item passed to delete ", id)
   let pool = await pgAccess.connectToDb();
   try {
     pool.query("BEGIN");
     let result = await pool.query("DELETE FROM todos WHERE id = ($1) RETURNING *", [id]);
     pool.query("COMMIT");
-    return result.rows;
+    console.log(result.rows)
+    return result.rows
   } catch (err) {
     console.log('error deleting post ', err);
     await pool.query("ROLLBACK");

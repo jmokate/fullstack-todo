@@ -72,8 +72,8 @@ function App() {
    const deleteUrl = `/api/delete/${id}`
     await axios.delete(deleteUrl)
       .then(response => console.log('front end delete', response.data))
-      .catch(err => console.log("error with delete ", err));
-  };
+      .catch(err => console.log("error with delete ", err))
+  }
 
   
   return (
@@ -99,6 +99,6 @@ function App() {
       />
     </div>
   );
-};
+}
 
 export default App;

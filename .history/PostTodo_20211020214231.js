@@ -42,6 +42,7 @@ const putTodo = async (id) => {
 };
 
 const deleteTodo = async (id) => {
+  console.log("item passed to delete ", id)
   let pool = await pgAccess.connectToDb();
   try {
     pool.query("BEGIN");

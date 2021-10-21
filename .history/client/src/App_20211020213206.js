@@ -40,7 +40,9 @@ function App() {
     }  
   };
 
-  const handleCheck = (id) => {   
+  const handleCheck = (id) => {
+    console.log(id)
+    
     const checkedItem = items.map(item => 
       item.id === id ? {...item, is_checked: !item.is_checked} : item
     );
@@ -49,10 +51,12 @@ function App() {
   };
 
   const putIsChecked = async (id) => {
+    
+    console.log('put check is ', id);
     await axios.put('/api/put', {id})
-      .then(response =>  console.log("put from server", response.data))
+      .then(response =>  console.log("res from server", response.data))
       .catch(err => console.log('put error ', err));
-  };
+  }
 
  const createPost = async (item) => {
    await axios
@@ -61,19 +65,22 @@ function App() {
       console.log("the response", response.data))
     .catch(err => console.log(err));
     GET_API();
- };
+ }
 
   const handleDelete = (id) => {
     setItems(items.filter((item) => item.id !== id));
-    deletePost(id);
-  };
+   // console.log("handle delete", items)
+    deletePost(id)
+    //GET_API();
+  }
 
   const deletePost = async (id) => {
    const deleteUrl = `/api/delete/${id}`
     await axios.delete(deleteUrl)
       .then(response => console.log('front end delete', response.data))
-      .catch(err => console.log("error with delete ", err));
-  };
+      .catch(err => console.log("error with delete ", err))
+    // GET_API();
+  }
 
   
   return (
@@ -99,6 +106,6 @@ function App() {
       />
     </div>
   );
-};
+}
 
 export default App;
