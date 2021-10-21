@@ -17,6 +17,7 @@ app.get('/api/get', async (req, res) => {
 
 app.post('/api/post', async (req,res) => {
    const newTodoItem = req.body.text;
+   await console.log("new todo item is ", newTodoItem);
    let result = await todoAccess.postTodo(newTodoItem);
    res.send(result);
 });
@@ -30,10 +31,13 @@ app.put('/api/put', async(req, res) => {
 app.delete(`/api/delete/:id`, async (req, res) => {
   const {id} = req.params;
   let result = await todoAccess.deleteTodo(id);
+  console.log(result);
   res.send(result);
 });
 
 
+
+//serve static files
 app.get("/*", (req, res) => {
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
