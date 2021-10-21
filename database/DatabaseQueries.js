@@ -1,5 +1,5 @@
-const pgAccess = require("./pgAccess");
-require('./server.js');
+const pgAccess = require("../pgAccess");
+require('../server.js');
 
 
 const getTodo = async() => {
